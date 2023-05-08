@@ -9,20 +9,19 @@ fs.readdir(folderPath, (err, files) => {
     if (err) {
         throw err;
     }
-    files.forEach(file => {
+    for (file of files) {
         const filePath = path.join(folderPath, file);
         fs.stat(filePath, (err, stats) => {
         if (err) {
             throw err;
         }
         if (stats.isFile()) {
-            let fileName = path.parse(file).name;
-            let fileExt = path.extname(file).replace('.', '');
+            const fileName = path.parse(file).name;
+            const fileExt = path.extname(file).replace('.', '');
             const fileSize = stats.size / 1024;
             console.log(fileName + ' - ' + fileExt + ' - ' + fileSize + ' kb');
             }
         });
-    });
-});
+    }});
 
 
