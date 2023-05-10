@@ -9,7 +9,7 @@ fs.readdir(folderPath, (err, files) => {
     if (err) {
         throw err;
     }
-    for (file of files) {
+    for (let file of files) {
         const filePath = path.join(folderPath, file);
         fs.stat(filePath, (err, stats) => {
         if (err) {
